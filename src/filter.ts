@@ -38,14 +38,14 @@ enum D2Theme {
 }
 
 enum D2Layout {
-  Dagre = "dagre",
-  Elk = "elk",
+  dagre = "dagre",
+  elk = "elk",
 }
 
 enum D2Format {
-  Svg = "svg",
-  Png = "png",
-  Pdf = "pdf",
+  svg = "svg",
+  png = "png",
+  pdf = "pdf",
 }
 
 type FilterOptions = {
@@ -53,6 +53,7 @@ type FilterOptions = {
   layout: D2Layout;
   format: D2Format;
   sketch: boolean;
+  pad: number;
   folder?: string;
   filename?: string;
   caption?: string;
@@ -66,9 +67,10 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
   const classes = attrs[1];
   const options: FilterOptions = {
     theme: D2Theme.NeutralDefault,
-    layout: D2Layout.Dagre,
-    format: D2Format.Svg,
+    layout: D2Layout.dagre,
+    format: D2Format.svg,
     sketch: false,
+    pad: 100,
   };
 
   if (classes.indexOf("d2") < 0) return undefined;
@@ -86,6 +88,9 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
         break;
       case "format":
         if (item[1] in D2Format) options.format = item[1] as D2Format;
+        break;
+      case "pad":
+        options.pad = +item[1];
         break;
       case "folder":
       case "filename":
@@ -107,7 +112,7 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
 
   const savePath = tmpFile.name + "." + options.format;
   var newPath = join(outDir, `${options.filename}.${options.format}`);
-  const fullCmd = `d2 -t=${options.theme} -l=${options.layout} -s=${options.sketch} ${tmpFile.name} ${savePath}`;
+  const fullCmd = `d2 --theme=${options.theme} --layout=${options.layout} --sketch=${options.sketch} --pad=${options.pad} ${tmpFile.name} ${savePath}`;
   exec(fullCmd);
 
   if (options.folder == "") {
