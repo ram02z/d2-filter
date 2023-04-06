@@ -2,6 +2,7 @@ node_modules
 npm-debug.log
 lib/
 *.err
+!README.md
 *.md
 *.pdf
 img/
