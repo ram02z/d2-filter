@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["es2022"],
+    "moduleResolution": "node",
+    "strict": true,
+    "outDir": "lib",
+    "sourceMap": true
+  },
+  "include": ["src/*.ts"],
+  "compileOnSave": true
+}

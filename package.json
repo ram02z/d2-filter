@@ -1,0 +1,36 @@
+{
+  "name": "d2-filter",
+  "version": "1.0.0",
+  "description": "Pandoc filter for D2",
+  "main": "dist/filter",
+  "files": ["lib", "filter-shim.js"],
+  "scripts": {
+    "prepare": "tsc --project ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ram02z/d2-filter.git"
+  },
+  "keywords": [
+    "pandoc",
+    "D2"
+  ],
+  "bin": {
+    "d2-filter": "filter-shim.js"
+  },
+  "author": "Omar Zeghouani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ram02z/d2-filter/issues"
+  },
+  "homepage": "https://github.com/ram02z/d2-filter#readme",
+  "dependencies": {
+    "@types/tmp": "^0.2.3",
+    "pandoc-filter": "^2.1.0",
+    "tmp": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.3"
+  }
+}
