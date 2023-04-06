@@ -107,7 +107,13 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
   writeFileSync(tmpFile.name, content);
   const outDir = options.folder ?? "";
 
-  if (options.filename === "") {
+  if (options.caption && !options.filename) {
+    options.filename = options.caption
+      ?.replace(/(?:^|\s|["'([{])+\S/g, (match) => match.toUpperCase())
+      .replace(/\s+/g, "");
+  }
+
+  if (!options.filename) {
     options.filename = `diagram-${counter}`;
   }
 
