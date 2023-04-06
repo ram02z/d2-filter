@@ -32,17 +32,20 @@ Using attributes of the fenced code block, you can specify:
     - Example: `{.d2 theme=1}`.
     - Default: `0`
     - Values: Run `d2 themes` for possible options.
-- Layout engine: 
+- Layout engine
     - Example: `{.d2 layout=elk}`.
     - Default: `dagre`
     - Values: Run `d2 layout` for possible options.
-- Image format:
+- Image format
     - Example: `{.d2 format=png}`
     - Default: `svg`
     - Values: `svg`, `png`, `pdf`
 - Sketch
     - Example: `{.d2 sketch=true}`
     - Default: `false`
+- Image padding
+    - Example: `{.d2 pad=0}`
+    - Default: `100`
 - Folder
     - Example: `{.d2 folder=img}`
     - Default: no folder as image is encoded to data uri on img tag
