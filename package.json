@@ -1,9 +1,12 @@
 {
   "name": "d2-filter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pandoc filter for D2",
   "main": "dist/filter",
-  "files": ["lib", "filter-shim.js"],
+  "files": [
+    "lib",
+    "filter-shim.js"
+  ],
   "scripts": {
     "prepare": "tsc --project ."
   },
@@ -25,12 +28,12 @@
   },
   "homepage": "https://github.com/ram02z/d2-filter#readme",
   "dependencies": {
-    "@types/tmp": "^0.2.3",
     "pandoc-filter": "^2.1.0",
     "tmp": "^0.2.1"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
+    "@types/tmp": "^0.2.3",
     "typescript": "^5.0.3"
   }
 }
