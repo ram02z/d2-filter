@@ -6,10 +6,11 @@ diagrams in markdown documents.
 ## Example
 
 ```
-~~~d2
+~~~{.d2 pad=20}
 x -> y
 ~~~
 ```
+![Output](https://user-images.githubusercontent.com/59267627/230503069-51bb0a62-68ee-429a-84a8-b42342659268.png)
 
 ## Usage 
 
