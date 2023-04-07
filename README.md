@@ -53,7 +53,7 @@ Using attributes of the fenced code block, you can specify:
     - Example: `{.d2 filename="test"}`
     - Default: `diagram-N`
 - Pandoc caption
-    - Example: `{.d2 filename="This is a test image"}`
+    - Example: `{.d2 caption="This is a test image"}`
     - Default: empty string
 
 ## Credits
