@@ -110,7 +110,8 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
   if (options.caption && !options.filename) {
     options.filename = options.caption
       ?.replace(/(?:^|\s|["'([{])+\S/g, (match) => match.toUpperCase())
-      .replace(/\s+/g, "");
+      .replace(/\s+/g, "")
+      .replace(/\//g, "-");
   }
 
   if (!options.filename) {
