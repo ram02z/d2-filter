@@ -59,7 +59,7 @@ Using attributes of the fenced code block, you can specify:
 ## Credits
 
 - [mermaid-filter](https://github.com/raghur/mermaid-filter)
-- [mathjax-pandoc-filter](https://github.com/raghur/mermaid-filter)
+- [mathjax-pandoc-filter](https://github.com/lierdakil/mathjax-pandoc-filter)
 
 ## License
 
