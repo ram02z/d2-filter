@@ -52,6 +52,7 @@ Using attributes of the fenced code block, you can specify:
 - Filename
     - Example: `{.d2 filename="test"}`
     - Default: `diagram-N`
+    - `folder` attribute is required to save file locally
 - Pandoc caption
     - Example: `{.d2 caption="This is a test image"}`
     - Default: empty string
