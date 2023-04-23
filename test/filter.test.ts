@@ -5,7 +5,7 @@ import { action } from "../src/filter";
 import { Attr, filter, Inline, PandocJson, Target } from "pandoc-filter";
 import { rmSync } from "fs";
 
-const TEST_OUTPUT_DIR = "tmp"
+const TEST_OUTPUT_DIR = "tmp";
 
 async function run(cmd: string): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -27,8 +27,8 @@ const toPandocJSON = async (filename: string) => {
 };
 
 afterAll(() => {
-  rmSync(TEST_OUTPUT_DIR, { recursive: true, force: true })
-})
+  rmSync(TEST_OUTPUT_DIR, { recursive: true, force: true });
+});
 
 const getImage = (pandocJSON: PandocJson) => {
   const paraInlines = pandocJSON.blocks.flatMap((block) =>
@@ -59,7 +59,7 @@ test("invalid codeblock class", async () => {
   expect(input).toBeTypeOf("object");
   filter(input, action, "").then((output) => {
     expect(output.blocks).toHaveLength(1);
-    assert.strictEqual(output.blocks[0].t, "CodeBlock")
+    assert.strictEqual(output.blocks[0].t, "CodeBlock");
   });
 });
 
@@ -224,7 +224,7 @@ test("pandoc width image attribute", async () => {
   expect(input).toBeTypeOf("object");
   filter(input, action, "").then((output) => {
     const [attr, inlines, target] = getImage(output);
-    assert.deepEqual(attr, ["", [], [ [ "width", "50%" ] ]]);
+    assert.deepEqual(attr, ["", [], [["width", "50%"]]]);
     assert.deepEqual(inlines, [{ t: "Str", c: "" }]);
     assert.ok(target[0].startsWith("data:image/svg+xml;base64,"));
     assert.deepEqual(target[1], "");
@@ -236,7 +236,7 @@ test("pandoc width height attribute", async () => {
   expect(input).toBeTypeOf("object");
   filter(input, action, "").then((output) => {
     const [attr, inlines, target] = getImage(output);
-    assert.deepEqual(attr, ["", [], [ [ "height", "30" ] ]]);
+    assert.deepEqual(attr, ["", [], [["height", "30"]]]);
     assert.deepEqual(inlines, [{ t: "Str", c: "" }]);
     assert.ok(target[0].startsWith("data:image/svg+xml;base64,"));
     assert.deepEqual(target[1], "");
