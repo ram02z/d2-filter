@@ -81,6 +81,13 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
     switch (item[0]) {
       case "theme":
         if (+item[1] in D2Theme) options.theme = +item[1];
+        const themeNamePascal = item[1]
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
+          .join("");
+        if (themeNamePascal in D2Theme) {
+          options.theme = D2Theme[themeNamePascal as keyof typeof D2Theme];
+        }
         break;
       case "sketch":
         options.sketch = item[1] === "true";
@@ -100,7 +107,7 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
         options[item[0]] = item[1];
         break;
       default:
-        imageAttrs.push(item)
+        imageAttrs.push(item);
         break;
     }
   });

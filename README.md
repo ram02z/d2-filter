@@ -29,8 +29,8 @@ pandoc -F d2-filter.cmd test.md -o test.pdf
 Using attributes of the fenced code block, you can specify:
 
 - Theme
-    - Example: `{.d2 theme=1}`.
-    - Default: `0`
+    - Example: `{.d2 theme="Grape soda"}`.
+    - Default: `0` or `Neutral default`
     - Values: Run `d2 themes` for possible options.
 - Layout engine
     - Example: `{.d2 layout=elk}`.
