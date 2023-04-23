@@ -56,9 +56,11 @@ Using attributes of the fenced code block, you can specify:
     - Example: `{.d2 caption="This is a test image"}`
     - Default: empty string
 - Pandoc image attributes
-    - Example: `{.d2 #id .class width=30 height=20px}`
+    - Example: `{.d2 width=30 height=20px}`
     - Default: empty array
     - Values: See pandoc's [`link_attributes`](https://pandoc.org/MANUAL.html#extension-link_attributes) extension
+    - Note that `#id` and `.class` attributes are not supported, but any
+      key-value attributes should work
 
 ## Credits
 
