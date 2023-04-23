@@ -48,13 +48,17 @@ Using attributes of the fenced code block, you can specify:
     - Default: `100`
 - Folder
     - Example: `{.d2 folder=img}`
-    - Default: no folder as image is encoded to data uri on img tag
+    - Default: no folder as image is encoded to data URI on `img` tag
 - Filename
     - Example: `{.d2 filename="test"}`
     - Default: `diagram-N`
 - Pandoc caption
     - Example: `{.d2 caption="This is a test image"}`
     - Default: empty string
+- Pandoc image attributes
+    - Example: `{.d2 #id .class width=30 height=20px}`
+    - Default: empty array
+    - Values: See pandoc's [`link_attributes`](https://pandoc.org/MANUAL.html#extension-link_attributes) extension
 
 ## Credits
 

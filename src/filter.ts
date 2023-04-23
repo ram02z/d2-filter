@@ -73,6 +73,7 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
     sketch: false,
     pad: 100,
   };
+  const imageAttrs: pandoc.AttrList = [];
 
   if (classes.indexOf("d2") < 0) return undefined;
 
@@ -97,6 +98,9 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
       case "filename":
       case "caption":
         options[item[0]] = item[1];
+        break;
+      default:
+        imageAttrs.push(item)
         break;
     }
   });
@@ -150,7 +154,7 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
   const fig = options.caption ? "fig:" : "";
   return pandoc.Para([
     pandoc.Image(
-      [id, [], []],
+      [id, [], imageAttrs],
       [pandoc.Str(options.caption ?? "")],
       [newPath, fig]
     ),
