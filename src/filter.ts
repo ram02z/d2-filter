@@ -58,7 +58,10 @@ type FilterOptions = {
   caption?: string;
 };
 
-export const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
+export const action: pandoc.SingleFilterActionAsync = async function (
+  elt,
+  _format
+) {
   if (elt.t != "CodeBlock") return undefined;
   const attrs = elt.c[0];
   const content = elt.c[1];
@@ -78,13 +81,16 @@ export const action: pandoc.SingleFilterActionAsync = async function (elt, _form
   attrs[2].map((item) => {
     switch (item[0]) {
       case "theme":
-        if (+item[1] in D2Theme) options.theme = +item[1];
-        const themeNamePascal = item[1]
-          .split(" ")
-          .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
-          .join("");
-        if (themeNamePascal in D2Theme) {
-          options.theme = D2Theme[themeNamePascal as keyof typeof D2Theme];
+        if (+item[1] in D2Theme) {
+          options.theme = +item[1];
+        } else {
+          const themeNamePascal = item[1]
+            .split(" ")
+            .map((word) => word.charAt(0).toUpperCase() + word.substring(1))
+            .join("");
+          if (themeNamePascal in D2Theme) {
+            options.theme = D2Theme[themeNamePascal as keyof typeof D2Theme];
+          }
         }
         break;
       case "sketch":
