@@ -8,7 +8,10 @@
     "filter-shim.js"
   ],
   "scripts": {
-    "prepare": "tsc --project ."
+    "prepare": "tsc --project .",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,8 @@
     "@types/node": "^18.15.11",
     "@types/tmp": "^0.2.3",
     "@types/which": "^3.0.0",
-    "typescript": "^5.0.3"
+    "@vitest/coverage-c8": "^0.30.1",
+    "typescript": "^5.0.3",
+    "vitest": "^0.30.1"
   }
 }
