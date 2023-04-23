@@ -10,12 +10,10 @@ import {
 import * as pandoc from "pandoc-filter";
 import { join } from "path";
 import { fileSync } from "tmp";
-import * as which from "which";
 var exec = require("child_process").execSync;
 
 var counter = 0;
 const folder = process.cwd();
-const errorLog = createWriteStream(join(folder, "d2-filter.err"));
 
 enum D2Theme {
   NeutralDefault = 0,
@@ -60,7 +58,7 @@ type FilterOptions = {
   caption?: string;
 };
 
-const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
+export const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
   if (elt.t != "CodeBlock") return undefined;
   const attrs = elt.c[0];
   const content = elt.c[1];
@@ -166,15 +164,4 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
       [newPath, fig]
     ),
   ]);
-};
-
-export = function () {
-  // @ts-ignore
-  process.stderr.write = errorLog.write.bind(errorLog);
-  const resolvedOrNull = which.sync("d2", { nothrow: true });
-  if (resolvedOrNull === null) {
-    console.error("d2 is not installed");
-    return;
-  }
-  pandoc.stdio(action);
 };
