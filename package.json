@@ -1,6 +1,6 @@
 {
   "name": "d2-filter",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Pandoc filter for D2",
   "main": "dist/filter",
   "files": [
