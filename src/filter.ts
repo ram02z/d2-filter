@@ -123,7 +123,7 @@ const action: pandoc.SingleFilterActionAsync = async function (elt, _format) {
   const fullCmd = `d2 --theme=${options.theme} --layout=${options.layout} --sketch=${options.sketch} --pad=${options.pad} ${tmpFile.name} ${savePath}`;
   exec(fullCmd);
 
-  if (options.folder == "") {
+  if (!options.folder) {
     if (options.format === "svg") {
       const data = readFileSync(savePath, "utf8");
       newPath =
