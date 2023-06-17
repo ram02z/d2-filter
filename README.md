@@ -16,7 +16,7 @@ x -> y
 
 ```bash
 # Installation
-npm i d2-filter
+npm i -g d2-filter
 
 # Unix
 pandoc -F d2-filter test.md -o test.pdf
