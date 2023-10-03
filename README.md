@@ -24,6 +24,8 @@ pandoc -F d2-filter test.md -o test.pdf
 pandoc -F d2-filter.cmd test.md -o test.pdf
 ```
 
+If using with [Quarto](https://quarto.org/), you can use [quarto-d2](https://github.com/data-intuitive/quarto-d2) to avoid issues with pandoc filters.
+
 ## Configuration
 
 Using attributes of the fenced code block, you can specify:
