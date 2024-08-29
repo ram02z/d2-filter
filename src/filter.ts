@@ -31,6 +31,7 @@ enum D2Theme {
   EvergladeGreen = 104,
   ButteredToast = 105,
   DarkMauve = 200,
+  DarkFlagshipTerrastruct = 201,
   Terminal = 300,
   TerminalGrayscale = 301,
   Origami = 302,
@@ -48,7 +49,7 @@ enum D2Format {
 }
 
 type FilterOptions = {
-  theme: D2Theme;
+  theme: D2Theme | string;
   layout: D2Layout;
   format: D2Format;
   sketch: boolean;
@@ -90,6 +91,9 @@ export const action: pandoc.SingleFilterActionAsync = async function (
             .join("");
           if (themeNamePascal in D2Theme) {
             options.theme = D2Theme[themeNamePascal as keyof typeof D2Theme];
+          } else {
+            console.warn(`Theme '${item[1]}' not recognised.`);
+            options.theme = item[1];
           }
         }
         break;
@@ -136,7 +140,11 @@ export const action: pandoc.SingleFilterActionAsync = async function (
   const savePath = tmpFile.name + "." + options.format;
   var newPath = join(outDir, `${options.filename}.${options.format}`);
   const fullCmd = `d2 --theme=${options.theme} --layout=${options.layout} --sketch=${options.sketch} --pad=${options.pad} ${tmpFile.name} ${savePath}`;
-  exec(fullCmd);
+  try {
+    exec(fullCmd);
+  } catch (error) {
+    return Promise.reject(Error(`Failed to execute command: '${fullCmd}'`));
+  }
 
   if (!options.folder) {
     if (options.format === "svg") {

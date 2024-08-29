@@ -87,6 +87,18 @@ test("theme name", async () => {
   });
 });
 
+test("invalid theme number", async () => {
+  const input = await toPandocJSON("test/data/invalid_theme_number.md");
+  expect(input).toBeTypeOf("object");
+  await expect(() => filter(input, action, "")).rejects.toThrowError()
+});
+
+test("invalid theme name", async () => {
+  const input = await toPandocJSON("test/data/invalid_theme_name.md");
+  expect(input).toBeTypeOf("object");
+  await expect(() => filter(input, action, "")).rejects.toThrowError()
+});
+
 test("elk layout engine", async () => {
   const input = await toPandocJSON("test/data/elk.md");
   expect(input).toBeTypeOf("object");
